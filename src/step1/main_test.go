@@ -1,40 +1,19 @@
 package main
 
 import (
-	"bytes"
-	"os"
-	"strings"
+	"regexp"
 	"testing"
+
+	"github.com/SuperTikuwa/testutil"
 )
 
 func Test_main(t *testing.T) {
-	got := extractStdout(t, main)
-	expect := "Hello,World!"
 
-	if got != expect {
+	got := testutil.ExtractStdout(t, main)
+	expect := "Hello,World!"
+	reg := `[Hh][Ee][Ll][Ll][Oo][, ][Ww][Oo][Rr][Ll][Dd][.!]?`
+
+	if !regexp.MustCompile(reg).Match([]byte(got)) {
 		t.Error("expected: ", expect, "\nactual: ", got)
 	}
-}
-
-func extractStdout(t *testing.T, fnc func()) string {
-	t.Helper()
-
-	orgStdout := os.Stdout
-
-	defer func() {
-		os.Stdout = orgStdout
-	}()
-
-	r, w, _ := os.Pipe()
-	os.Stdout = w
-	main()
-	w.Close()
-
-	var buf bytes.Buffer
-
-	if _, err := buf.ReadFrom(r); err != nil {
-		t.Fatalf("failed to read buf: %v", err)
-	}
-
-	return strings.TrimRight(buf.String(), "\n")
 }
