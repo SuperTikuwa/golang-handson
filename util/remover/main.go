@@ -14,4 +14,9 @@ func main() {
 		log.Fatal(err)
 	}
 
+	err = exec.Command("sh", "-c", "rm `find "+basePath+" | grep go.sum`").Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 }
