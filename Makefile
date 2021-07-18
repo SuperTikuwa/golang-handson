@@ -1,2 +1,5 @@
 init:
-	util/installer
+	util/installer/installer
+
+remove:
+	util/remover/remover
