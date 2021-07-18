@@ -6,5 +6,18 @@
 // 	Number: "K99999"
 package main
 
-func main() {
+import (
+	"regexp"
+	"testing"
+
+	"github.com/SuperTikuwa/testutil"
+)
+
+func Test_main(t *testing.T) {
+	out := testutil.ExtractStdout(t, main)
+	reg := `{.+ [0-9]+ [a-zA-Z][0-9]{5}}`
+
+	if !regexp.MustCompile(reg).MatchString(out) {
+		t.Errorf("Wrong answer %s \n Match %s", out, reg)
+	}
 }
