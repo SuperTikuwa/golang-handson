@@ -3,5 +3,5 @@ init:
 	util/installer/installer
 
 remove:
-	go build -o ./util/remove/remove ./util/remove/main.go
+	go build -o ./util/remover/remover ./util/remover/main.go
 	util/remover/remover
