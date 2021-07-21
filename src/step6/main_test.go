@@ -1,39 +1,23 @@
-// Step6
-// Step5で制作したStudent構造体に，以下のようなメソッドを追加してください．
-// 	- getName() : 名前を返すメソッド
-// 	- getAge() : 年齢を返すメソッド
-// 	- getNumber() : 学籍番号を返すメソッド
-// 	- selfIntroduction() : 自己紹介文を返すメソッド
+// Step5
+// Student構造体を定義して，そのメンバーを表示するプログラムを制作してください．
+// 構造体のメンバ変数は，以下のように定義してください．(値は適当に決めてください)
+// 	Name: "Taro",
+// 	Age:  20,
+// 	Number: "K99999"
 package main
 
 import (
-	"strconv"
-	"strings"
+	"regexp"
 	"testing"
+
+	"github.com/SuperTikuwa/testutil"
 )
 
 func Test_main(t *testing.T) {
+	out := testutil.ExtractStdout(t, main)
+	reg := `{.+ [0-9]+ [a-zA-Z][0-9]{5}}`
 
-	m := student{
-		name:   "Taro",
-		age:    20,
-		number: "2012345",
+	if !regexp.MustCompile(reg).MatchString(out) {
+		t.Errorf("Wrong answer %s \n Match %s", out, reg)
 	}
-	intro := m.selfIntroduction()
-	if !strings.Contains(intro, m.name) {
-		t.Error("name is not included")
-	}
-	if !strings.Contains(intro, strconv.Itoa(m.age)) {
-		t.Error("age is not included")
-	}
-	if !strings.Contains(intro, m.number) {
-		t.Error("number is not included")
-	}
-
-	primaryAge := m.getAge()
-	m.birthDay()
-	if primaryAge+1 != m.getAge() {
-		t.Error("age is not changed")
-	}
-
 }

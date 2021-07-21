@@ -5,5 +5,14 @@
 // ※birthDay関数は値をreturnしてはいけません．
 package main
 
-func main() {
+import "testing"
+
+func Test_main(t *testing.T) {
+	age := 0
+	currentAge := age
+	birthDay(&age)
+
+	if age != currentAge+1 {
+		t.Error("age is not updated")
+	}
 }

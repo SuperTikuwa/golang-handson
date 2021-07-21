@@ -1,0 +1,22 @@
+{
+  "name": "go-study",
+  "version": "1.0.0",
+  "description": "## 内容",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuperTikuwa/go-study.git"
+  },
+  "author": "Fukuda",
+  "license": "SUSHI-WARE LICENSE",
+  "bugs": {
+    "url": "https://github.com/SuperTikuwa/go-study/issues"
+  },
+  "homepage": "https://github.com/SuperTikuwa/go-study#readme",
+  "devDependencies": {
+    "simple-git-hooks": "^2.5.1"
+  }
+}
