@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-const steps = 10
+const steps = 9
 const basePath = "./src/step"
 
 func main() {
