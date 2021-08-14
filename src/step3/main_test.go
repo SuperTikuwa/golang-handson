@@ -16,6 +16,7 @@ func Test_main(t *testing.T) {
 
 	names := []string{"Alice", "Bob", "Chris"}
 	for _, name := range names {
+		fmt.Println("---テスト用のデータが出力されます---")
 		r := sayHello(name)
 		reg = `[Hh]ello.` + name + `.*`
 		if !regexp.MustCompile(reg).Match([]byte(r)) {
